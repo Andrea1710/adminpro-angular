@@ -1,6 +1,3 @@
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
 <section
   id="wrapper"
   class="login-register login-sidebar"
@@ -9,6 +6,7 @@
   <div class="login-box card">
     <div class="card-body">
       <form
+        (ngSubmit)="ingresar()"
         class="form-horizontal form-material"
         id="loginform"
         action="index.html"
