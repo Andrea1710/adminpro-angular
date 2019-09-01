@@ -7,7 +7,7 @@ import { SettingsService } from "src/app/services/service.index";
   styles: []
 })
 export class AccountSettingsComponent implements OnInit {
-  constructor(public settings: SettingsService) {}
+  constructor(public settingsService: SettingsService) {}
 
   ngOnInit() {
     this.colocarCheck();
@@ -15,7 +15,7 @@ export class AccountSettingsComponent implements OnInit {
 
   cambiarColor(tema: string, link: any) {
     this.aplicarCheck(link);
-    this.settings.aplicarTema(tema);
+    this.settingsService.aplicarTema(tema);
   }
 
   aplicarCheck(link: any) {
@@ -26,7 +26,7 @@ export class AccountSettingsComponent implements OnInit {
 
   colocarCheck() {
     let selectores: any = document.getElementsByClassName("selector");
-    let tema = this.settings.ajustes.tema;
+    let tema = this.settingsService.ajustes.tema;
     for (const ref of selectores)
       if (ref.getAttribute("data-theme") === tema) ref.classList.add("working");
   }

@@ -6,9 +6,7 @@ interface Ajustes {
   tema: string;
 }
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable({ providedIn: "root" })
 export class SettingsService {
   ajustes: Ajustes = {
     temaUrl: "assets/css/colors/default.css",
@@ -24,18 +22,16 @@ export class SettingsService {
   }
 
   cargarAjustes() {
-    let ajustes = localStorage.getItem("ajustes");
-    if (ajustes) {
+    if (localStorage.getItem("ajustes")) {
       this.ajustes = JSON.parse(localStorage.getItem("ajustes"));
       this.aplicarTema(this.ajustes.tema);
     } else this.aplicarTema(this.ajustes.tema);
   }
 
   aplicarTema(tema: string) {
-    const url = `assets/css/colors/${tema}.css`;
-    this.document.getElementById("theme").setAttribute("href", url);
-    this.ajustes.tema = tema;
-    this.ajustes.temaUrl = url;
+    const temaUrl = `assets/css/colors/${tema}.css`;
+    this.document.getElementById("theme").setAttribute("href", temaUrl);
+    this.ajustes = { tema: tema, temaUrl: temaUrl };
     this.guardarAjustes();
   }
 }

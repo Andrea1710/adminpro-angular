@@ -15,17 +15,13 @@ import {
 })
 export class IncrementadorComponent implements OnInit {
   @ViewChild("txtProgress", { static: false }) txtProgress: ElementRef;
-
   @Input("nombre") leyenda: string = "Leyenda";
   @Input() progreso: number = 50;
+  @Output("actualizaValor") cambioValor: EventEmitter<number> = new EventEmitter();
 
-  @Output("actualizaValor") cambioValor: EventEmitter<
-    number
-  > = new EventEmitter();
+  constructor() { }
 
-  constructor() {}
-
-  ngOnInit() {}
+  ngOnInit() { }
 
   onChange(newValue: number) {
     if (newValue >= 100) this.progreso = 100;
