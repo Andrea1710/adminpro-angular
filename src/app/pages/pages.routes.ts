@@ -1,3 +1,4 @@
+import {ProfileComponent} from './profile/profile.component';
 import {RouterModule, Routes} from '@angular/router';
 
 import {PagesComponent} from './pages.component';
@@ -41,6 +42,11 @@ const pagesRoutes: Routes = [
         path: 'account-settings',
         component: AccountSettingsComponent,
         data: {titulo: 'Ajustes del Tema'},
+      },
+      {
+        path: 'perfil',
+        component: ProfileComponent,
+        data: {titulo: 'Perfil de Usuario'},
       },
       {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
     ],
