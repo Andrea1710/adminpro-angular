@@ -1,3 +1,5 @@
+import {LoginGuard} from './guards/login.guard';
+import {AdminGuard} from './guards/admin.guard';
 import {MedicoService} from './medico/medico.service';
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
@@ -26,6 +28,8 @@ import {
     ModalUploadService,
     HospitalService,
     MedicoService,
+    AdminGuard,
+    LoginGuard,
   ],
 })
 export class ServiceModule {}
