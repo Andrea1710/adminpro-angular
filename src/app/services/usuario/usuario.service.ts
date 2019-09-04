@@ -7,6 +7,8 @@ import {URL_SERVICIOS} from './../../config/config';
 import {SubirArchivoService} from './../subir-archivo/subir-archivo.service';
 import {Usuario} from 'src/app/models/usuario.model';
 
+import swal from 'sweetalert';
+
 @Injectable({providedIn: 'root'})
 export class UsuarioService {
   usuario: Usuario;
@@ -19,6 +21,29 @@ export class UsuarioService {
     public subirArchivoService: SubirArchivoService
   ) {
     this.cargarStorage();
+  }
+
+  renuevaToken() {
+    let url = URL_SERVICIOS + '/login/renuevatoken/';
+    url += '?token=' + this.token;
+
+    return this.http.get(url).pipe(
+      map((res: any) => {
+        this.token = res.token;
+        localStorage.setItem('token', this.token);
+
+        return true;
+      }),
+      catchError(err => {
+        this.router.navigate(['/login']);
+        swal(
+          'No se pudo renovar el token',
+          'No fue posible renovar el Token',
+          'error'
+        );
+        throw err;
+      })
+    );
   }
 
   estaLogeado() {

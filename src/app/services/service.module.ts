@@ -14,6 +14,7 @@ import {
   SharedService,
   UsuarioService,
   SubirArchivoService,
+  VerificaTokenGuard,
 } from './service.index';
 
 @NgModule({
@@ -30,6 +31,7 @@ import {
     MedicoService,
     AdminGuard,
     LoginGuard,
+    VerificaTokenGuard,
   ],
 })
 export class ServiceModule {}
